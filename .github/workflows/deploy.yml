@@ -1,4 +1,4 @@
-name: Deploy to DigitalOcean
+name: Deploy to DO
 
 on:
   push:
@@ -27,8 +27,8 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/django-devops-app:latest
 
-      - name: Deploy to DigitalOcean
-        uses: appleboy/ssh-action@main
+      - name: Deploy to Droplet
+        uses: appleboy/ssh-action@v1.2.0  # <--- Fixed version
         with:
           host: ${{ secrets.DO_DROPLET_IP }}
           username: ${{ secrets.DO_SSH_USER }}
