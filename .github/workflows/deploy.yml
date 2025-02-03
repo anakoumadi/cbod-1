@@ -35,6 +35,12 @@ jobs:
           key: ${{ secrets.DO_SSH_KEY }}
           port: 22
           script: |
+            # Clone or update the repository
+            if [ ! -d "cbod-1" ]; then
+              git clone https://github.com/anakoumadi/cbod-1.git
+            fi
+            cd cbod-1
+            git pull origin main
             docker-compose -f docker-compose.prod.yml down
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/django-devops-app:latest
             docker-compose -f docker-compose.prod.yml up -d
