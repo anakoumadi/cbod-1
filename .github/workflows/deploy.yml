@@ -28,7 +28,7 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/django-devops-app:latest
 
       - name: Deploy to DigitalOcean
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@main
         with:
           host: ${{ secrets.DO_DROPLET_IP }}
           username: ${{ secrets.DO_SSH_USER }}
